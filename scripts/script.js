@@ -2,6 +2,9 @@ let prevScrollpos = window.pageYOffset;
 window.onscroll = function () {
   let currentScrollPos = window.pageYOffset;
   if (prevScrollpos > currentScrollPos) {
+    if (currentScrollPos < 85) {
+      return;
+    }
     document.getElementById("navbar").style.top = "14px";
     document.querySelector(".t-wrap").style.top = "0px";
   } else {
