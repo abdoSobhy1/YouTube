@@ -43,3 +43,21 @@ overlay.onclick = function () {
   mainv = false;
   visible = false;
 };
+
+const sidebar = function () {
+  if (window.innerWidth <= 768) {
+    toggle.classList.remove("active");
+    overlay.classList.remove("is-active");
+    menu.classList.remove("closed");
+    menu.classList.remove("is-closed");
+    console.log("hehe");
+  } else {
+    menu.classList.add("closed");
+    menu.classList.add("is-closed");
+  }
+};
+
+window.onload = sidebar();
+window.addEventListener("resize", function () {
+  sidebar();
+});
