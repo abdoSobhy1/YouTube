@@ -9,42 +9,17 @@
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/main.css">
+    <script src="scripts/script.js" defer></script>
     <title>YouTube</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="wrap"></div>
-        <header>
-            <div class="container">
-                <div class="logo">
-                    <img src="images/logo.png" alt="">
-                </div>
-                <div class="nav buttons">
-                    <ul>
-                        <li><a href="#"><i class="fa-solid fa-bars"></i></a></li>
-                        <li><a href="#" class="active"><i class="fa-solid fa-house"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-fire"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-film"></i></a></li>
-                    </ul>
-                </div>
-                <div class="search">
-                    <input type="search" placeholder="Search">
-                </div>
-                <div class="personal buttons">
-                    <ul>
-                        <li><a href="#"><i class="fa-solid fa-magnifying-glass search-icon"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-video"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
-                        <li><a href="#"><img src="images/profile.jpg" class="profile"> <i
-                                    class="fa-solid fa-angle-down"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        <aside>
+        <div class="wrap t-wrap"></div>
+        <aside class="menu closed is-closed">
             <div class="logo">
-                <img src="images/logo.png" alt="">
+                <img src="images/logo.png" alt="" class="big">
+                <img src="images/favicon.png" alt="" class="small">
             </div>
             <ul class="shortcuts">
                 <li><a href="#"><i class="fa-solid fa-film"></i> <span>Library</span></a></li>
@@ -71,12 +46,40 @@
             </ul>
             <div class="aside buttons">
                 <ul>
-                    <li><a href="#" class="active"><i class="fa-solid fa-house"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-fire"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-film"></i></a></li>
+                    <li><a href="#" class="active"><i class="fa-solid fa-house"></i>Home</a></li>
+                    <li><a href="#"><i class="fa-solid fa-fire"></i>Trending</a></li>
+                    <li><a href="#"><i class="fa-solid fa-film"></i>Library</a></li>
                 </ul>
             </div>
         </aside>
+        <div class="overlay"></div>
+        <header id="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="images/logo.png" alt="">
+                </div>
+                <div class="nav buttons">
+                    <ul>
+                        <li><a href="#" class="toggle"><i class="fa-solid fa-bars"></i></a></li>
+                        <li><a href="#" class="active"><i class="fa-solid fa-house"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-fire"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-film"></i></a></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input type="search" placeholder="Search">
+                </div>
+                <div class="personal buttons">
+                    <ul>
+                        <li class="search-icon"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-video"></i></a></li>
+                        <li><a href="#"><i class="fa-solid fa-bell"></i></a></li>
+                        <li><a href="#"><img src="images/profile.jpg" class="profile"> <i
+                                    class="fa-solid fa-angle-down"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
         <main>
             <nav class="chips">
                 <ul>
@@ -87,7 +90,9 @@
                     <li><a href="#">Animation</a></li>
                     <li><a href="#">After Effects</a></li>
                     <li><a href="#">Motion Graphic</a></li>
-                    <li><a href="#">javaScript</a></li>
+                    <li><a href="#">Python</a></li>
+                    <li><a href="#">Cats</a></li>
+                    <li><a href="#">JavaScript</a></li>
                     <li><a href="#">Hacking</a></li>
                 </ul>
             </nav>
@@ -230,7 +235,6 @@
                 </div>
             </div>
         </main>
-        <div class="wrap b-wrap"></div>
     </div>
 </body>
 
