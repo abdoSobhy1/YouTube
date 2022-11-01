@@ -69,6 +69,7 @@ header {
     left: 110px;
     top: 14px;
     z-index: 2;
+    overflow: hidden;
     transition: 0.3s;
     box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.13), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
 }
@@ -292,6 +293,7 @@ header .buttons ul li a.second-menu {
     position: fixed;
     background-color: var(--main-color);
     top: 0;
+    left: 0;
     z-index: 2;
 }
 
