@@ -61,3 +61,19 @@ window.onload = sidebar();
 window.addEventListener("resize", function () {
   sidebar();
 });
+
+let topMenutoggle = document.querySelector(".second-menu");
+let topMenu = document.querySelector(".menu-list");
+let bigLogo = document.querySelector(".big-logo");
+let SmallLogo = document.querySelector(".small-logo");
+
+topMenutoggle.onclick = function () {
+  topMenu.classList.toggle("closed");
+  if (topMenu.classList.contains("closed")) {
+    bigLogo.style.opacity = "1";
+    SmallLogo.style.opacity = "0";
+  } else {
+    bigLogo.style.opacity = "0";
+    SmallLogo.style.opacity = "1";
+  }
+};
