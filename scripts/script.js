@@ -75,5 +75,23 @@ topMenutoggle.onclick = function () {
   } else {
     bigLogo.style.opacity = "0";
     SmallLogo.style.opacity = "1";
+    if (window.innerWidth <= 363) {
+      SmallLogo.style.opacity = "0";
+    }
+  }
+};
+
+window.onresize = function () {
+  if (window.innerWidth <= 375) {
+    if (topMenu.classList.contains("closed")) {
+      bigLogo.style.opacity = "1";
+      SmallLogo.style.opacity = "0";
+    } else {
+      bigLogo.style.opacity = "0";
+      SmallLogo.style.opacity = "1";
+    }
+  } else {
+    bigLogo.style.opacity = "1";
+    SmallLogo.style.opacity = "0";
   }
 };
