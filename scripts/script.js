@@ -2,9 +2,6 @@ let prevScrollpos = window.pageYOffset;
 window.onscroll = function () {
   let currentScrollPos = window.pageYOffset;
   if (prevScrollpos > currentScrollPos) {
-    if (currentScrollPos < 85) {
-      return;
-    }
     document.getElementById("navbar").style.top = "14px";
     document.querySelector(".t-wrap").style.top = "0px";
   } else {
@@ -33,6 +30,7 @@ toggle.onclick = function () {
     setTimeout(() => {
       menu.classList.add("is-closed");
     }, 300);
+    overlay.classList.remove("is-active");
     mainv = false;
   }
 };
@@ -53,7 +51,6 @@ const sidebar = function () {
     overlay.classList.remove("is-active");
     menu.classList.remove("closed");
     menu.classList.remove("is-closed");
-    console.log("hehe");
   } else {
     menu.classList.add("closed");
     menu.classList.add("is-closed");

@@ -8,6 +8,11 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #eee;
     padding: 15px;
+    --main-color: #eee;
+    --main-bg: white;
+    --main-gray: #636363;
+    --sec-gray: #f4f4f4;
+    --main-text: #2e2e2e;
 }
 
 a {
@@ -24,7 +29,11 @@ ul {
     position: fixed;
     width: 100%;
     min-height: 100%;
+    top: 0;
+    left: 0;
     z-index: 3;
+    background-color: rgba(46, 46, 46, 0.3);
+    transition: background-color 0.3s;
 }
 
 .container {
@@ -53,7 +62,7 @@ ul {
 }
 
 header {
-    background-color: white;
+    background-color: var(--main-bg);
     border-radius: 15px;
     position: fixed;
     width: calc(100% - 130px);
@@ -73,7 +82,7 @@ header {
 
 header .container {
     display: flex;
-    gap: 15px;
+    gap: 30px;
     align-items: center;
     padding: 20px;
     max-width: 100%;
@@ -81,24 +90,21 @@ header .container {
 
 header .logo img {
     width: 100px;
+    margin-right: 30px;
 }
 
-@media (min-width:769px) {
-    header .logo img {
-        display: none;
-    }
-}
-
-header .buttons {
-    width: calc(100% / 4);
+header .nav {
+    width: calc(100% / 3.5);
 }
 
 header .personal {
+    width: calc(100% / 5);
     display: flex;
     justify-content: flex-end;
 }
 
 header .search {
+    margin-left: 30px;
     flex: 1;
 }
 
@@ -109,8 +115,8 @@ header .buttons ul {
 
 header .buttons ul li a {
     display: flex;
-    color: #636363;
-    background-color: #f4f4f4;
+    color: VAR(--MAIN-GRAY);
+    background-color: var(--sec-gray);
     border-radius: 15px;
     width: 40px;
     aspect-ratio: 1/1;
@@ -123,6 +129,7 @@ header .buttons ul li a {
 }
 
 header .buttons ul li a.active,
+.toggle.active,
 header .buttons ul li a:hover {
     color: #dc0407;
     background-color: #fbe2e6;
@@ -146,12 +153,12 @@ header .buttons ul li a img~i {
 
 header .search input {
     border: none;
-    background-color: #f4f4f4;
+    background-color: var(--sec-gray);
     border-radius: 15px;
     padding: 15px;
     width: 100%;
     font-size: 14px;
-    color: #636363;
+    color: VAR(--MAIN-GRAY);
     font-weight: 500;
 }
 
@@ -164,8 +171,18 @@ header .search input:focus {
     display: none;
 }
 
+@media (max-width: 991px) {
+    .search input {
+        display: none;
+    }
+
+    .search-icon {
+        display: flex;
+    }
+}
+
 @media (max-width: 768px) {
-    header .nav {
+    header .nav ul li {
         display: none;
     }
 
@@ -183,21 +200,13 @@ header .search input:focus {
         border-radius: 15px;
         margin-right: 0;
     }
-
-    .search input {
-        display: none;
-    }
-
-    .search-icon {
-        display: flex;
-    }
 }
 
 .wrap {
     width: 100vw;
     height: 36px;
     position: fixed;
-    background-color: #eee;
+    background-color: var(--main-color);
     top: 0;
     z-index: 2;
 }
@@ -209,7 +218,7 @@ aside {
     padding: 20px;
     border-radius: 15px;
     min-height: calc(100vh - 30px);
-    background-color: white;
+    background-color: var(--main-bg);
     z-index: 4;
     transition: 0.3s;
     box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.13), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
@@ -257,7 +266,7 @@ aside.closed .logo .small {
     width: 40px;
 }
 
-aside>ul {
+aside>ul:not(:first-of-type) {
     margin-top: 10px;
 }
 
@@ -265,7 +274,7 @@ aside .shortcuts li a,
 aside .subs li a,
 aside .more li a {
     display: flex;
-    color: #636363;
+    color: VAR(--MAIN-GRAY);
     margin-bottom: 5px;
     padding: 10px;
     align-items: center;
@@ -295,7 +304,7 @@ aside .more li a i {
 
 aside .subs h2,
 aside .more h2 {
-    color: #636363;
+    color: VAR(--MAIN-GRAY);
     font-weight: bold;
     font-size: 16px;
     white-space: nowrap;
@@ -310,7 +319,7 @@ aside .subs img {
 }
 
 aside ul li a:hover {
-    background-color: #f4f4f4;
+    background-color: var(--sec-gray);
 }
 
 .aside.buttons {
@@ -322,9 +331,9 @@ aside.closed {
     overflow: hidden;
 }
 
-aside.isclosed .shortcuts li a span,
-aside.isclosed .subs li a span,
-aside.isclosed .more li a span {
+aside.is-closed .shortcuts li a span,
+aside.is-closed .subs li a span,
+aside.is-closed .more li a span {
     display: none;
 }
 
@@ -334,6 +343,7 @@ aside.closed .more li a span,
 aside.closed .subs h2,
 aside.closed .more h2 {
     opacity: 0;
+    pointer-events: none;
 }
 
 aside.closed .shortcuts li a i,
@@ -344,6 +354,10 @@ aside.closed .subs img {
 }
 
 @media (max-width:768px) {
+    aside {
+        overflow: visible;
+    }
+
     aside .logo {
         display: none;
     }
@@ -365,12 +379,12 @@ aside.closed .subs img {
 
     aside .buttons ul li a {
         display: flex;
-        color: #636363;
-        background-color: #f4f4f4;
+        color: VAR(--MAIN-GRAY);
+        background-color: var(--sec-gray);
         border-radius: 15px;
-        width: 65px;
-        aspect-ratio: 1/1;
-        font-size: 14px;
+        width: 85px;
+        min-height: 70px;
+        font-size: 12px;
         font-weight: 500;
         flex-direction: column;
         align-items: center;
@@ -380,16 +394,47 @@ aside.closed .subs img {
         padding: 5px;
     }
 
-
     aside .buttons ul li a i {
         font-size: 20px;
         margin-bottom: 10px;
+    }
+
+    aside .buttons .add i {
+        margin-bottom: 0;
+        font-size: 26px;
     }
 
     aside .buttons ul li a.active,
     aside .buttons ul li a:hover {
         color: #dc0407;
         background-color: #fbe2e6;
+    }
+
+    aside .buttons .images {
+        position: relative;
+        width: 24px;
+        height: 22px;
+        margin-bottom: 10px;
+    }
+
+    aside .buttons .images img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-height: 100%;
+        transition: 0.3s;
+    }
+
+    aside .buttons .images .c {
+        opacity: 0;
+    }
+
+    aside .buttons ul li a:hover .c {
+        opacity: 1;
+    }
+
+    aside .buttons ul li a:hover .b {
+        opacity: 0;
     }
 }
 
@@ -424,20 +469,20 @@ main .chips ul::after {
     width: 90px;
     position: absolute;
     height: 100%;
-    background-image: linear-gradient(to left, #eee 60%, transparent);
+    background-image: linear-gradient(to left, var(--main-color) 60%, transparent);
     right: 0;
 }
 
 main .chips ul::before,
 main .chips ul li a {
     display: block;
-    color: #2e2e2e;
+    color: var(--main-text);
     border-radius: 15px;
     padding: 8px 15px;
     font-weight: 500;
     width: fit-content;
     white-space: nowrap;
-    background-color: white;
+    background-color: var(--main-bg);
     transition: 0.3s ease;
 }
 
@@ -460,8 +505,8 @@ main .chips ul::before {
 
 main .chips ul li a.active,
 main .chips ul li a:hover {
-    background-color: #2e2e2e;
-    color: white;
+    background-color: var(--main-text);
+    color: var(--main-bg);
 }
 
 main .ad {
@@ -491,10 +536,16 @@ main .vids {
 }
 
 main .vids .video {
-    background-color: white;
+    background-color: var(--main-bg);
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.13), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+main .vids .video:hover {
+    transform: translatey(-5px);
 }
 
 main .vids .thumb img {
@@ -516,18 +567,24 @@ main .vids .info .ch-logo {
     top: -25px;
     left: 15px;
     border-radius: 15px;
-    border: white 3px solid;
+    border: var(--main-bg) 3px solid;
 }
 
 main .vids .info .vid-name {
-    color: #2e2e2e;
+    color: var(--main-text);
     font-size: 16px;
     margin-top: 30px;
     margin-bottom: 10px;
+    max-width: 100%;
+    max-height: 200px;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 main .vids .info span {
-    color: #636363;
+    color: VAR(--MAIN-GRAY);
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 5px;
