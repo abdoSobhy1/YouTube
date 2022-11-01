@@ -234,7 +234,6 @@ aside {
         bottom: 0px;
         min-height: auto;
         height: 85px;
-        overflow: hidden;
         box-shadow: 0 -12px 20px 0 rgba(0, 0, 0, 0.13), 0 -2px 4px 0 rgba(0, 0, 0, 0.12);
     }
 }
@@ -354,24 +353,18 @@ aside.closed .subs img {
 }
 
 @media (max-width:768px) {
-    aside {
-        overflow: visible;
-    }
-
-    aside .logo {
-        display: none;
-    }
-
     aside>ul {
         display: none;
     }
 
     aside .aside.buttons {
         display: block;
+        max-width: 100%;
         flex: 1;
     }
 
     aside .aside.buttons ul {
+        max-width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -380,16 +373,15 @@ aside.closed .subs img {
     aside .buttons ul li a {
         display: flex;
         color: VAR(--MAIN-GRAY);
-        background-color: var(--sec-gray);
         border-radius: 15px;
-        width: 85px;
+        width: 75px;
         min-height: 70px;
-        font-size: 12px;
+        font-size: 9px;
         font-weight: 500;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-right: 15px;
+        margin-right: 5px;
         transition: 0.3s;
         padding: 5px;
     }
@@ -407,7 +399,7 @@ aside.closed .subs img {
     aside .buttons ul li a.active,
     aside .buttons ul li a:hover {
         color: #dc0407;
-        background-color: #fbe2e6;
+        background-color: transparent;
     }
 
     aside .buttons .images {
